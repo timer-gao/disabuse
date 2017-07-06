@@ -1,6 +1,7 @@
 package edu.ssdut.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import edu.ssdut.compositeID.ConcernedId;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,7 +26,7 @@ public class Concerned implements Serializable {
     @JsonBackReference
     private User concernedUser;
 
-    @Column(name="createdate",nullable = false)
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
 

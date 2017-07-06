@@ -16,7 +16,7 @@ public class City {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "procince_id",nullable = false)
+    @JoinColumn(name = "province_id",nullable = false)
     @JsonBackReference
     private Province province;
 

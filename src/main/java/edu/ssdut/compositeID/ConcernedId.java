@@ -1,4 +1,6 @@
-package edu.ssdut.entity;
+package edu.ssdut.compositeID;
+
+import edu.ssdut.entity.User;
 
 import java.io.Serializable;
 

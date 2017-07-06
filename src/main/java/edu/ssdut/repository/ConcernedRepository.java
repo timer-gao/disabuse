@@ -1,7 +1,7 @@
 package edu.ssdut.repository;
 
 import edu.ssdut.entity.Concerned;
-import edu.ssdut.entity.ConcernedId;
+import edu.ssdut.compositeID.ConcernedId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

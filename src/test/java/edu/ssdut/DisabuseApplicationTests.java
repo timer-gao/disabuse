@@ -211,5 +211,14 @@ public class DisabuseApplicationTests {
 
 		User user3 = userRepository.readByEmail("baby@123.com");
 		Assert.notNull(user3);
+
+		Pageable pageable = new PageRequest(0, 10, new Sort(Sort.Direction.ASC, "user_id"));
+		Page<Concerned> page = concernedRepository.findAll(pageable);
+		Assert.notNull(page,"!!!!!!!!!!!!!!!page为空!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		for(Concerned concerned : page.getContent()) {
+			logger.info("====++++++++=======+++++++++++++concerned====+++++++++============\n" +
+					"user_id:{},user name:{},concerned_id:{},createDate:{}",concerned.getUser().getId(),
+					concerned.getConcernedUser().getId(),concerned.getUser().getNickname(),concerned.getCreateDate());
+		}
 	}
 }

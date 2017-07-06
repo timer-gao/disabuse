@@ -3,8 +3,8 @@ package edu.ssdut.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -26,7 +26,7 @@ public class User implements Serializable{
     @Column(columnDefinition = "text")
     private String introduction;
     @Basic @Lob
-    private byte[] avatar;
+    private Image avatar;
     private Long views;
 
     @ManyToOne
@@ -49,18 +49,16 @@ public class User implements Serializable{
     @JsonBackReference
     private Set<Concerned> concerns;
 
-    public Set<Concerned> getConcerns() {
-        return concerns;
-    }
-
-    public void setConcerns(Set<Concerned> concerns) {
-        this.concerns = concerns;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "interest",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "tag_id")})
+    private Set<Tag> interests;
 
     public User() {
     }
 
-    public User(String nickname, String password, Character sex, String email, String signature, String introduction, byte[] avatar, Long views, Profession profession, City city, Set<Education> educations, Set<Concerned> concerns) {
+    public User(String nickname, String password, Character sex, String email, String signature, String introduction, Image avatar, Long views, Profession profession, City city, Set<Education> educations, Set<Concerned> concerns) {
         this.nickname = nickname;
         this.password = password;
         this.sex = sex;
@@ -131,11 +129,11 @@ public class User implements Serializable{
         this.introduction = introduction;
     }
 
-    public byte[] getAvatar() {
+    public Image getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(byte[] avatar) {
+    public void setAvatar(Image avatar) {
         this.avatar = avatar;
     }
 
@@ -161,6 +159,14 @@ public class User implements Serializable{
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public Set<Concerned> getConcerns() {
+        return concerns;
+    }
+
+    public void setConcerns(Set<Concerned> concerns) {
+        this.concerns = concerns;
     }
 
 
