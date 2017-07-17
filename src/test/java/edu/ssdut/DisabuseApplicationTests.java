@@ -1,11 +1,9 @@
 package edu.ssdut;
 
-import edu.ssdut.entity.*;
+import edu.ssdut.entities.*;
 import edu.ssdut.enums.EduDegreeType;
-import edu.ssdut.repository.*;
-import org.hibernate.Hibernate;
+import edu.ssdut.repositories.*;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
