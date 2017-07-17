@@ -1,0 +1,20 @@
+li{
+    list-style:none;
+}
+nav{
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+.upload{
+    float: left;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+}
+body{
+    text-align: center;
+}
+h2 h3{
+
+}

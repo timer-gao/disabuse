@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="../static/css/questionListItem.css" th:href="@{'css/questionListItem.css'}"
+          type="text/css"/>
+    <title>Card</title>
+</head>
+<body>
+<div class="card">
+    <!--RatChet卡片式布局开始-->
+    <ul class="table-view">
+        <li class="table-view-cell media">
+            <h4 class="topic"><span>来自话题:</span>
+                <span><!--/*@thymesVar id="question" type="templates"*/-->
+                <a th:text="${question.section.title}" href="topic.html"/></span></h4>
+        <li>
+            <a th:href="@{'profile.html?userId='+${question.user.nickname}}" target="_blank">
+                <img class="avatar" th:src="@{'avatar/'+${question.user.nickname}+'.'+${question.user.avatar}}"/>
+                <span class="user nikename" th:text="${question.user.nickname}"></span>
+            </a>
+            <span class="user signature" th:text="','+${question.user.signature}"></span>
+        </li>
+        <li><a class="navigate-right" th:href="@{'questionDetail.html?questionId='+${question.id}}" target="_blank">
+            <!--/*@thymesVar id="question" type="templates"*/-->
+            <h3 th:text="${question.title}"></h3>
+            <!--这里可以指明点击该卡片的跳转-->
+
+            <!--标题傍边的图片在这里修改-->
+            <nav>
+        <li>
+            <img class="media-object pull-left" src="images/logo.png"/>
+        </li>
+        <li>
+            <div class="media-object pull-right">
+                <p th:text="${question.description}"></p>
+            </div>
+        </li>
+        </nav>
+        </a>
+        </li>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

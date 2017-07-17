@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <!--<link rel="icon" href="/favicon.ico" type="image/x-icon"/>-->
+    <title>释惑--首页</title>
+    <link rel="stylesheet" href="css/home.css" type="text/css"/>
+    <link rel="script" href="js/home.js" type="text/javascript"/>
+</head>
+<body>
+<header class="topbar">
+    <nav>
+        <ul class="clear">
+            <li class="first"><a href="#"><img src="images/logo.png" height="32" width="40"/></a></li>
+            <li class="search">
+                <form class="search_form">
+                    <input class="search_input" name="search" type="search" placeholder="搜索你感兴趣的内容..."/>
+                </form>
+            </li>
+            <li><a href="/">首页</a></li>
+            <li><a href="#">发现</a></li>
+            <li><a href="#">话题</a></li>
+            <li><!--/*@thymesVar id="user" type="templates"*/-->
+            <a th:href="'askQuestion.html?username='+${user.nickname}" target="_blank">提问</a></li>
+            <li>
+                <span class="Darrow"></span>
+                <a href="#">消息</a>
+                <dl>
+                    <dt><span class="arrow"></span></dt>
+                    <dd><a href="#">通知</a></dd>
+                    <dd><a href="#">关注</a></dd>
+                    <dd><a href="#">赞同或回答</a></dd>
+                </dl>
+            </li>
+            <li class="user">
+                <span class="Darrow"></span>
+                <!--/*@thymesVar id="user" type="templates"*/-->
+                <a th:href="'profile.html?username='+${user.nickname}" target="_blank">
+                    <img src="images/logo.png" width="40" height="32"/>
+                </a>
+                <dl>
+                    <dt><span class="arrow"></span></dt>
+                    <dd><a th:href="'profile.html?username='+${user.nickname}" target="_blank">我的主页</a></dd>
+                    <dd><a href="#">私信</a></dd>
+                    <dd><a href="#">设置</a></dd>
+                    <dd><a href="#">退出</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!--/*@thymesVar id="number" type="templates"*/-->
+<iframe class="cardFrame" th:src="'questionListItem.html?number='+${number.num}" scrolling="no"/>
+<iframe class="cardFrame" th:src="'questionListItem.html?number='+${number.num}" scrolling="no"/>
+<iframe class="cardFrame" th:src="'questionListItem.html?number='+${number.num}" scrolling="no"/>
+</body>
+</html>

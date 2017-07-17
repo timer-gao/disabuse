@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
+<head>
+    <meta charset="UTF-8"/>
+    <!--/*@thymesVar id="user" type="templates"*/-->
+    <title th:text="${user}+'的释惑个人主页'"></title>
+</head>
+<body>
+<h1>
+    <!--/*@thymesVar id="user" type="templates"*/-->
+    <span th:text="${user}"></span>的释惑个人主页
+</h1>
+</body>
+</html>

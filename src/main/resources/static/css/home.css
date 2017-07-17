@@ -1,0 +1,207 @@
+*{
+    margin:0;
+    padding:0;
+    vertical-align: middle;
+}
+body{
+    background-color: #f7f8fa;
+}
+.clear:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: blue;
+}
+header nav{
+    display:inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin: auto;
+    vertical-align: middle;
+}
+header li{
+    list-style:none;
+    float:left;
+    position: relative;
+    text-align: center;
+    /*background: -moz-linear-gradient(top, #fff, #555D5F 2% ,#555D5F 50%,#3E4245 100%);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), color-stop(2%, #555D5F), color-stop(50%, #555D5F),to(#3E4245));*/
+    background: black;
+}
+header li:hover{
+    /*background: -moz-linear-gradient(top, #fff, #3E4245 2% ,#555D5F 80%,#555D5F 100%);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), color-stop(2%, #3E4245), color-stop(80%, #3E4245),to(#555D5F));*/
+    background:#3E4245;
+    -moz-transition: background 1s ease-out;
+    -webkit-transition: background 1s ease-out;
+}
+header li a{
+    display:block;
+    height:40px;
+    line-height:40px;
+    padding:0 30px;
+    font-size:12px;
+    color:#fff;
+    text-shadow: 0px -1px 0px #000;
+    text-decoration:none;
+    white-space:nowrap;
+    -webkit-border-top-left-radius: 2px;
+    z-index:100;
+}
+header li > a{
+    position:relative;
+}
+header li.first{
+    background: transparent;
+}
+header li.first a{
+    padding: 0;
+    margin-right: 10px;
+}
+header li.first img{
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+header li.search{
+    height: 30px;
+    width: 300px;
+    padding-top: 5px;
+    background: transparent;
+
+}
+header li.search form{
+
+}
+header li.search input{
+    height: 30px;
+    width: 300px;
+}
+header li.user{
+    background: transparent;
+}
+header li.user a{
+    padding-left: 40px;
+
+}
+header li.user img{
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+header dl{
+    position:absolute;
+    display:block;
+    top:40px;
+    left: -25px;
+    width:165px;
+    background:#222222;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -webkit-box-shadow:1px 1px 3px #292929;
+    -moz-box-shadow:1px 1px 3px #292929;
+    z-index:10;
+}
+header li:hover dl{
+    top:50px;
+    display:block;
+    width:145px;
+    padding:10px;
+}
+header dl a{
+    background:transparent;
+    border:0 none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-transition: background 0.5s ease-out;
+    -webkit-transition: background 0.5s ease-out;
+    z-index:50;
+}
+header dl a:hover{
+    color:#FFF;
+    background:#999E9F;
+    -moz-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+header dd{
+    margin-top:-40px;
+    opacity:0;
+    width:145px;
+    -webkit-transition-property:all;
+    /*-webkit-transition-timing-function: cubic-bezier(5,0,5,0);*/
+    -moz-transition-property: all;
+    /*-moz-transition-timing-function: cubic-bezier(5,0,5,0);*/
+    /*-webkit-transition-delay:5s;
+    -moz-transition-delay:5s;*/
+}
+header li:hover dd{
+    margin-top:0;
+    opacity:1;
+}
+header li dd:nth-child(1){
+    -webkit-transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+}
+header li dd:nth-child(2){
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+}
+header li dd:nth-child(3){
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+}
+header li dd:nth-child(4){
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+}
+header dt{
+    display:none;
+    margin-top:-25px;
+    padding-top:15px;
+    height:10px;
+}
+header li:hover dt{
+    display:block;
+}
+.Darrow{
+    float:right;
+    margin:18px 10px 0 0;
+    border-width:5px;
+    border-color:#FFF transparent transparent transparent;
+    border-style:solid;
+    width:0;
+    height:0;
+    line-height:0;
+    overflow:hidden;
+    cursor:pointer;
+    text-shadow: 0px -1px 0px #000;
+    -webkit-box-shadow:0px -1px 0px #000;
+    -moz-box-shadow:0px -1px 0px #000;
+}
+.arrow{
+    margin:0 auto;
+    margin-top:-5px;
+    display:block;
+    width:10px;
+    height:10px;
+    background:#222222;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+}
+.cardFrame{
+    width:650px;
+    height:272px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-left: 150px;
+    border-style:hidden;
+}
