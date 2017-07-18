@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class profileController {
     @RequestMapping("/profile")
     public String profile(HttpServletRequest request,Model model){
-        String userName=request.getParameter("userId");
-        model.addAttribute("user",userName);
+        model.addAttribute("user",request.getSession().getAttribute("user"));
         return "/profile";
     }
 }

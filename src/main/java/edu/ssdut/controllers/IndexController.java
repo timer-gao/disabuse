@@ -42,10 +42,12 @@ public class IndexController {
     private SectionRepository sectionRepository;
     @Autowired
     private QuestionRepository questionRepository;
-    @RequestMapping("/")
-    public String index(HttpServletRequest request, Model model) throws ServletException, ParseException {
-        model.addAttribute("questionListItem",new ModelAndView("questionListItem"));
+    @RequestMapping(value = {"/","/index"})
+    public String index(HttpServletRequest request, Model model){
         model.addAttribute("number",new NumberAuto());
+
+        //model.addAttribute("questionListItem",new ModelAndView("questionListItem"));
+
         /*Profession profession=new Profession("互联网");
         professionRepository.save(profession);
         Province province=new Province(1L,"辽宁");
@@ -63,21 +65,22 @@ public class IndexController {
         user.addEducation(new Education(university,major,EduDegreeType.本科,
                 dateFormat1.parse("2014-09-01"),dateFormat1.parse("2018-06-01")));
         userRepository.save(user);*/
-        User user=userRepository.readByNickname("gaomj");
+
+        /*User user=userRepository.readByNickname("gaomj");*/
+
         /*questionRepository.deleteAll();
         sectionRepository.save(new Section("学校里的那点事儿","每个人都有自己的青春，说说自己上学时候的心得吧。",null));
         */
-        model.addAttribute("user",user);
+        model.addAttribute("user",request.getSession().getAttribute("user"));
         logger.info("-------remote user:--->",request.getRemoteUser());
 
         String searchString=request.getParameter("search");
-        System.out.println(searchString);
+        logger.info("search:"+searchString);
         return "index";
     }
 }
 class NumberAuto{
     private int num=0;
-
     public int getNum(){
         return num++;
     }

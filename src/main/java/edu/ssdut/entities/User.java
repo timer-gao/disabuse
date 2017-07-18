@@ -72,6 +72,13 @@ public class User implements Serializable{
         this.concerns = concerns;
     }
 
+    public User(String nickname, String password, Character sex, String email) {
+        this.nickname = nickname;
+        this.password = password;
+        this.sex = sex;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }

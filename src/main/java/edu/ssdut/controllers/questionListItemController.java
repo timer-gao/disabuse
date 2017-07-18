@@ -1,26 +1,18 @@
 package edu.ssdut.controllers;
 
 import edu.ssdut.entities.Question;
-import edu.ssdut.entities.Section;
-import edu.ssdut.entities.Tag;
 import edu.ssdut.entities.User;
 import edu.ssdut.repositories.QuestionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Gaomj on 2017/7/13.
@@ -32,19 +24,22 @@ public class questionListItemController {
     @Autowired
     private QuestionRepository questionRepository;
 
-    private Page<Question> page;
+    private User user;
+    private List<Question> list;
     @RequestMapping("/questionListItem")
     public String questionListItem(HttpServletRequest request,
                                          HttpServletResponse response,Model model){
+        user= (User) request.getSession().getAttribute("user");
         String number=request.getParameter("number");
-        logger.info("number:",number);
+        logger.info("number:"+number);
         int floor=Integer.parseInt(number);
         if(floor%3==0){
-            Pageable pageable = new PageRequest(floor/3, 3, new Sort(Sort.Direction.DESC, "id"));
-            page = questionRepository.findAll(pageable);
+            list = questionRepository.findAllByInterest(
+                    user.getProfession().getDescription()
+            );
         }
-        if(page!=null&&page.getContent()!=null&&page.getContent().size()>floor%3)
-            model.addAttribute("question",page.getContent().get(floor%3));
+        if(list!=null&&list.size()>floor%3)
+            model.addAttribute("question",list.get(floor%3));
         else return null;
         /*model.addAttribute("topic",new Section("topic","top_des",new Tag("互联网")));
         model.addAttribute("user",new User("admin","123456",'男',"admin@example.com",
