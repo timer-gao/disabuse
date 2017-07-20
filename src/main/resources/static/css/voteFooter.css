@@ -1,0 +1,53 @@
+
+.question{
+    display:flex;
+    height:52px;
+    padding:0 20px;
+    margin:4px -20px -8px;
+
+
+}
+
+.votebutton{
+    display: inline-block;
+    width:60px;
+    height:30px;
+    padding:0 12px;
+    background:#ebf3fb;
+
+    color:#2d84cc;
+    border: thin;
+    text-align:center;
+    border-radius:3px;
+    box-sizing:border-box;
+}
+
+
+.button-plain{
+    display:inline-block;
+    width:auto;
+    height:23px;
+    margin-left:15px;
+    bottom: 10px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    border: hidden ;
+}
+
+.smallimages{
+    width:19px;
+    height: 16px;
+    border: hidden;
+    display: inline-block;
+
+}
+
+.smallimages-report{
+    height:22px;
+    width: 24px;
+}
+
+.number{
+    height: 16px;
+    line-height: 2px;
+}

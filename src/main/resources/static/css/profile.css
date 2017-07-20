@@ -1,0 +1,311 @@
+#header{
+    position: fixed;
+    margin-top: 0px;
+}
+button{
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #ccd8e1;
+    border-radius: 3px;
+    color: #8590a6;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 32px;
+    padding: 0 16px;
+    text-align: center;
+}
+.entry-body{
+    background: #f7f8fa;
+}
+.main-body{
+    width : 1000px;
+    margin-left: 15%;
+    position: absolute;
+}
+.top-body{
+    height: 248px;
+    width: 1000px;
+}
+.cover{
+    margin-top: 20px;
+    height: 220px;
+    width: 1000px;
+    border: 1px solid #f0f2f7;
+}
+.cover-pager{
+    background-color: #f3f0f2;
+    height:110px;
+    width: 1000px;
+    position: absolute;
+}
+.back{
+    position: absolute;
+    top: 20px;
+    left: 800px;
+    font-size: 20px;
+}
+.show-area{
+    width: 1000px;
+    height:110px;
+    background-color: white;
+    position: absolute;
+    margin-top: 110px;
+}
+.head-show{
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+}
+#head-img{
+    width: 156px;
+    height: 156px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+.user-img{
+    width: 156px;
+    height: 156px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity:1;
+}
+.post-head-form{
+    position: relative;
+    text-align: center;
+    top: 30%;
+}
+#iframe{
+    display: none;
+}
+.take-photo{
+    display: block;
+    background-size: cover;
+    opacity: 0;
+}
+.tell-word{
+    text-align: center;
+    position: relative;
+}
+#file{
+    width: 156px;
+    height: 156px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+h1{
+    position: absolute;
+    width: 100%;
+    left: 220px;
+    top: 140px;
+    font-size: 20px;
+}
+#sex{
+    position: relative;
+    left: 20px;
+    font-size: 12px;
+}
+.introduction{
+    position: absolute;
+    top: 200px;
+    margin-left: 220px;
+    font-size: 12px;
+}
+.blue-button{
+    position: absolute;
+    left: 860px;
+    top: 180px;
+    border: 1px solid #0f88eb;
+    color: #0f88eb
+}
+.activity-body{
+    width : 700px;
+    top: 248px;
+    position: absolute;
+    background-color: white;
+    font-size: 15px;
+}
+.tab-div{
+    height: 50px;
+    border-bottom: 1px solid #f0f2f7;
+}
+.lead-tabs{
+    list-style: none;
+}
+.tab-items{
+    margin-left: 20px;
+    float: left;
+    text-align: center;
+    width: 60px;
+    display: inline-block;
+    padding-left: 10px;
+    height: 50px;
+}
+.active{
+    border-bottom-style: solid;
+    border-bottom-color: blue;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.current-state{
+    height: 50px;
+    padding-left: 20px;
+    border-bottom: 1px solid #f0f2f7;
+}
+.act-num{
+    font-size: 12px;
+}
+.info-body{
+    position: absolute;
+    top: 248px;
+    left: 720px;
+    width: 280px;
+    height: 222px;
+}
+.like-area{
+    height: 90px;
+    width: 280px;
+    background-color: white;
+    top: 0px;
+    right: 0px;
+    border-bottom: 1px solid #f0f2f7;
+}
+.cut-off{
+    position: absolute;
+    top: 10px;
+    left: 140px;
+    height: 70px;
+    width: 2px;
+    background-color: #f0f2f7;
+}
+.like-show{
+    height: 80px;
+    width: 138px;
+}
+#like-div{
+    position: absolute;
+    top: 0;
+    margin-left: 0;
+}
+#liked-div{
+    position: absolute;
+    top: 0;
+    margin-left: 142px;
+}
+.like-info{
+    position: absolute;
+    top: 20px;
+    left: 45px;
+}
+.like-num{
+    position: absolute;
+    top: 45px;
+    left: 60px;
+}
+.profile{
+    position: relative;
+    top: 10px;
+}
+.profile-item{
+    border-bottom: 1px solid #f0f2f7;
+    font-size: 14px;
+    align-items: center;
+    display: flex;
+    height: 46px;
+}
+.profile-item-value{
+    font-size: 14px;
+    position: absolute;
+    left: 230px;
+}
+.output{
+    position: relative;
+    top: 10px;
+    background-color: #f3f0f2;
+    border-bottom: 1px solid #f0f2f7;
+}
+.output-if-not-exist{
+    width: 700px;
+    height: 400px;
+    background: url(static/img/is.jpg);
+}
+.none-ouput{
+    position: absolute;
+    top: 100px;
+    left: 300px;
+}
+.output-if-exist{
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
+    background-color: gray;
+}
+.activity-items{
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 690px;
+    height: 200px;
+    background-color: white;
+    border: solid 1px #f0f2f7;
+}
+.activity-item-head{
+    height: 50px;
+    border-bottom: solid 1px #f0f2f7;
+}
+.activity-head-img{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+.activity-username{
+    position: relative;
+    margin-top: 20px;
+    font-size: 15px;
+    left: 40px;
+}
+.activity-put-time{
+    position: relative;
+    margin-top: 20px;
+    left: 500px;
+}
+.activity-item-body{
+    position: relative;
+    padding-left: 10px;
+    padding-top: 5px;
+    margin-top: 5px;
+    border-bottom: solid 1px #f0f2f7;
+    height: 100px;
+    overflow: hidden;
+    font-size: 15px;
+    width: 660px;
+}
+.activity-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+.activity-item-footer{
+    height: 50px;
+}
+.like-button{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #0f88eb;
+    position: relative;
+    left: 550px;
+    top: 5px;
+}
+.text{
+    word-break: break-all;
+    overflow-y: hidden;
+}

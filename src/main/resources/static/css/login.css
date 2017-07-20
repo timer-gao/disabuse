@@ -1,0 +1,230 @@
+﻿@charset "UTF-8";
+.jiehuo{
+  background: rgba(191, 221, 215, 0.48);
+    margin:0;
+}
+body{
+    background-color: #f7f8fa;
+}
+.index-main-body{
+    margin:auto;
+    display:inline-block;
+    min-height:600px;
+    border: 1px solid rgba(191, 221, 215, 0.48);
+
+}
+
+h1{
+    text-align:center;
+
+}
+.note{
+    color: red;
+    margin: 0px;
+}
+
+
+
+.index-main{
+  text-align:center;
+}
+
+.subtitle{
+   margin:auto;
+   text-align:center;
+    fnt-size: 20;
+    font-weight:400;
+   color: #242424;
+}
+
+.index-tab-navs, .navs-slider{
+    position: relative;
+    display: inline-block;
+    margin:auto;
+}
+
+.navs-slider{
+    position:relative;
+    top: 10px;
+}
+div{
+    display: block;
+}
+
+.index-tab-navs{
+   margin-bottom: 20px;
+   font-size: 20px;
+   text-align: center;
+}
+
+.index-tab-navs a.active
+{
+    opacity:1;
+    color: #0f88eb;
+}
+
+.index-tab-navs a{
+    float:left;
+    width: 4em;
+    line-height: 35px;
+    opacity: .7;
+}
+
+a:hover{
+    text-decoration: underline;
+
+}
+
+.sign-flow a{
+    color:inherit;
+}
+
+a{
+    text-decoration: none;
+}
+.sign-flow,.view{
+     float:none;
+     margin:auto;
+     width:349px;
+     text-align: center;
+}
+
+.sign-flow .view .group-inputs{
+    padding:1px 0;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    float:bottom;
+    line-height: 33px;
+}
+
+.sign-flow .view .input-wrapper{
+    position: relative;
+    margin:0;
+    overflow:hidden;
+    border-radius: 3px;
+}
+
+input{
+    width:100%;
+    height:34px;
+}
+
+.group-inputs label.error{
+    position: absolute;
+    top:0;
+    right:8px;
+    line-height: 35px;
+    visibility: hidden;
+    color:red;
+}
+
+.sign-flow .sign-button{
+    background: #0f88eb;
+    box-shadow: none;
+    border: 0;
+    border-radius: 3px;
+    line-height: 33px;
+    color:#fff;
+    margin-bottom:15px;
+}
+
+.sign-button{
+    display:block;
+    padding:0;
+    width:100%;
+    font-size:15px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.flow .view .cannotsignin{
+    margin-top:18px;
+}
+.clearfix:before{
+     display: table;
+     content: "";
+}
+#form{
+    display:  block;
+    margin-top:0em;
+}
+
+
+.modal-wrapper{
+    position:absolute;
+    background: #e0e0e0;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width:100%;
+    height:100%;
+    display:none;
+    overflow:auto;
+    z-index:100;
+    opacity: .9;
+}
+
+.modal-wrapper-off{
+    position:fixed;
+    width:400px;
+    height:300px;
+    top:50%;
+    margin-top: -150px;
+    left:50%;
+    margin-left:-202px;
+    opacity: 1;
+    background:#fff;
+    z-index: 120;
+    display:block;
+}
+
+.multiview
+{
+    opacity: 1;
+    width:400px;
+    height:300px;
+    position:fixed;
+    top:50%;
+    margin-top: -150px;
+    left:50%;
+    margin-left:-202px;
+    background-color: #fff;
+    color:#787878;
+    border:1px solid #cbcbcb;
+    border-radius:5px;
+    box-shadow:  0 0 15px 0 rgb(0,0,0);
+    outline:0;
+    z-index: 150;
+    overflow:hidden;
+
+}
+
+.forgot-form{
+    position:relative;
+    width:300px;
+    height:200px;
+    margin-left: 50px;
+    padding:0;
+
+}
+
+#forgotform .close{
+    position:absolute;
+    top:0;
+    right:0;
+    padding:12px 18px 16px 18px;
+    opacity:.8;
+    border-left:1px solid #BBB;
+}
+#forgotform h1 {
+    font-style: normal;
+
+}
+
+.forgot-button{
+    margin-top:20px;
+    height: 50px;
+    align-items: center;
+}
+

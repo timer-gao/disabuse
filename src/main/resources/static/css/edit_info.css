@@ -1,0 +1,90 @@
+body{
+     background-color: #e7eaf1;
+     text-align: center;
+ }
+#header{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+.main-body{
+    width:800px;
+    position: relative;
+    left: 20%;
+    background-color:#e7eaf1 ;
+    box-shadow: 0 1px 3px rgba(0, 37, 55, 0.05);
+}
+.main{
+    width: 800px;
+    font-size: 15px;
+    background-color: white;
+}
+.back-to-index{
+    position: absolute;
+    top: 50px;
+    left: 650px;
+    font-size: 15px;
+}
+.edit-extra-info{
+    position: absolute;
+    top: 90px;
+    left: 650px;
+    font-size: 15px;
+}
+.cover-pager{
+    height:150px;
+    width: 800px;
+    background-color: #f0f2f7;
+}
+.edit-info-area{
+    position: absolute;
+    top: 150px;
+    width: 800px;
+    background-color: white;
+    border-bottom: solid 1px #ccd8e1;
+}
+form{
+    font-size: 20px;
+    height:auto;
+}
+.form-item{
+    height: 90px;
+    width: 600px;
+    position: relative;
+    left: 100px;
+}
+.form-item-line{
+    height: 45px;
+    width: 500px;
+    position: relative;
+    top: 15px;
+    left: 50px;
+    border-bottom:  solid 2px #ccd8e1 ;
+}
+.form-item-label{
+    position: absolute;
+    font-size: 20px;
+    top: 10px;
+    left: 50px;
+}
+.form-item-select{
+    position: absolute;
+    top: 12px;
+    left: 150px;
+    font-size: 16px;
+}
+.form-input{
+    border:none;
+    border-bottom: solid 1px #ccd8e1;
+}
+#sex-choose{
+    display: none;
+    font-size: 15px;
+}
+#city-choose{
+    display: none;
+}
+#submit{
+
+}
+

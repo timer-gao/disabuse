@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8"/>
+    <title>释惑——新建话题</title>
+    <link rel="stylesheet" href="../static/css/askQuestion.css"/>
+</head>
+<body>
+<div class="main-wrapper>">
+    <div class="header">
+        <div class="header-logo" >
+            <img id="logo1" src="../static/images/logo.png"/>
+        </div>
+        <div class="inputSection-wrapper">
+            <div class="sectionTitle">新建话题</div>
+        </div>
+    </div>
+    <form class="writing" id="question" method="post" enctype="multipart/form-data">
+        <ul>
+            <li>
+                <h2>标题</h2>
+            </li>
+            <li>
+                <input class="inputTitle" name="inputTitle" type="text" placeholder="请输入标题"/>
+            </li>
+            <li>
+                <h3>正文</h3>
+            </li>
+            <li>
+                <textarea class="inputContent" name="inputContent" placeholder="请输入正文"></textarea>
+            </li>
+            <li>
+                <input name="tag" placeholder="请输入一个标签"/>
+            </li>
+            <li>
+                <button class="submit" type="submit">发布</button>
+            </li>
+        </ul>
+    </form>
+</div>
+</body>
+</html>

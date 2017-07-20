@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        $(document).ready(function () {
+            $("#sex-span").click(function () {
+//                alert('a');
+                $(this).css("display", "none");
+                $("#sex-choose").css("display", "block");
+            });
+        });
+        $(document).ready(function () {
+            $("#city-span").click(function () {
+//                alert('a');
+                $(this).css("display", "none");
+                $("#city-choose").css("display", "block");
+            });
+        });
+        $(document).ready(function () {
+            $("#sex-choose option").each(function () {
+                var txt = $("#sex-span").text();
+                var out = $(this).text();
+                if(txt == out){
+                    $(this).attr("selected","selected");
+                    return false;
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#city-choose option").each(function () {
+                var txt = $("#city-span").text();
+                var out = $(this).text();
+                if(txt == out){
+                    $(this).attr("selected","selected");
+                    return false;
+                }
+            });
+        });
+        /*]]>*/
+    </script>
+    <!--链接区域-->
+    <link type="text/css" rel="stylesheet" href="/static/css/edit_info.css"/>
+    <title>编辑个人信息</title>
+</head>
+<body>
+    <div class="main-body">
+        <div class="main">
+            <a class="back-to-index" th:href="|/people/${user.nickname}|">返回个人主页</a>
+            <div class="cover-pager"></div>
+            <div class="edit-info-area">
+                <div class="form-list">
+                    <form method="post" th:action="|/people/${user.nickname}/edit-info|" id="info-input">
+                        <div class="form-item">
+                            <div class="form-item-line">
+                                <label class="form-item-label">性别:</label>
+                                <span class="form-item-select" id="sex-span" th:text="${user.sex}"></span>
+                                <select class="form-item-select" id="sex-choose" name="sex">
+                                    <option id="sex-m" value="男" >男</option>
+                                    <option id="sex-w" value="女">女</option>
+                                    <option id="sex-none" value="无">无</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-item-line">
+                                <label class="form-item-label">E-mail:</label>
+                                <input type="email" th:value="${user.email}" class="form-item-select form-input" id="email" name="email" required="required"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-item-line">
+                                <label class="form-item-label">签名:</label>
+                                <input name="signature" type="text" th:value="${user.signature}?${user.signature}:''"  class="form-item-select form-input"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-item-line">
+                                <label class="form-item-label">描述:</label>
+                                <input name="introduction" type="text" th:value="${user.introduction}?${user.introduction}:''" class="form-item-select form-input"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-item-line">
+                                <label class="form-item-label">职业:</label>
+                                <input name="profession" type="text" th:value="${user.profession}?${user.profession.description}:'无'" class="form-item-select form-input"/>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-item-line">
+                                <label class="form-item-label">城市:</label>
+                                <span class="form-item-select" id="city-span" th:text="${cityName}">na</span>
+                                <select class="form-item-select" id="city-choose" name="city">
+                                    <div th:each="city:${cityList}">
+                                        <option th:id="${city.id}" th:value="${city.name}" th:text="${city.name}"></option>
+                                    </div>
+                                    <option value="none">none</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="submit" value="submit" id="submit"/>
+                    </form>
+                </div>
+                <div style="height: 100px"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
