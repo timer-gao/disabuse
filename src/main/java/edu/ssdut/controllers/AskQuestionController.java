@@ -43,11 +43,10 @@ public class AskQuestionController {
     @RequestMapping(value="/askQuestion", method=RequestMethod.POST)
     public @ResponseBody String handleFileUpload(HttpServletRequest request,
                                                  @RequestParam("inputSection") String sectionTitle,
-                                                 @RequestParam("username") String username,
                                                  @RequestParam("inputTitle") String title,
                                                  @RequestParam("inputContent") String content,
                                                  @RequestParam("imageFile") MultipartFile file){
-        User user=userRepository.readByNickname(username);
+        User user= (User) request.getSession().getAttribute("user");
         Section section=sectionRepository.findAllByTitle(sectionTitle);
         if(section==null){
             return "The section "+sectionTitle+" does not exist!";

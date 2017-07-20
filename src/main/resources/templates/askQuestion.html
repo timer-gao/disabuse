@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
     <meta charset="UTF-8"/>
     <title>释惑——提问</title>
-    <link rel="stylesheet" href="../static/css/askQuestion.css" th:href="'css/askQuestion.css'"/>
+    <link rel="stylesheet" href="../static/css/askQuestion.css"/>
+
 </head>
+
 <body>
-<form method="post" enctype="multipart/form-data">
-<ul>
-    <li>
-        <input type="text" class="inputSection" name="inputSection" placeholder="话题/版块"/>
-    </li>
-    <li>
-        <nav>
-            <h3 class="upload">请选择图片</h3>
-            <input type="file" class="upload" name="imageFile" accept=".jpeg, .jpg, .png"/>
-        </nav>
-    </li>
-    <li>
-        <h2>标题</h2>
-    </li>
-    <li>
-        <input class="inputTitle" name="inputTitle" type="text" placeholder="请输入标题"/>
-    </li>
-    <li>
-        <h3>正文</h3>
-    </li>
-    <li>
-        <input class="inputContent" name="inputContent" placeholder="请输入正文"/>
-    </li>
-    <li>
-        <button class="submit" type="submit">发布</button>
-    </li>
-</ul>
-</form>
+<div class="main-wrapper>">
+    <div class="header">
+        <div class="header-logo" >
+            <img id="logo1" src="../static/images/logo.png"/>
+        </div>
+        <div class="inputSection-wrapper">
+            <div class="sectionTitle">提问</div>
+        </div>
+    </div>
+    <form class="writing" id="question" method="post" enctype="multipart/form-data">
+        <ul>
+            <li>
+                <input class="chooseSection" name="inputSection" type="search"/>
+            </li>
+            <li>
+                <input type="file" title="点击上传图片" class="upload" name="imageFile" accept=".jpeg, .jpg, .png"/>请选择版块/话题
+            </li>
+            <li>
+                <h2>标题</h2>
+            </li>
+            <li>
+                <input class="inputTitle" name="inputTitle" type="text" placeholder="请输入标题"/>
+            </li>
+            <li>
+                <h3>正文</h3>
+            </li>
+            <li>
+                <textarea class="inputContent" name="inputContent" placeholder="请输入正文"></textarea>
+            </li>
+            <li>
+                <button class="submit" type="submit">发布</button>
+            </li>
+        </ul>
+    </form>
+</div>
+
 </body>
 </html>

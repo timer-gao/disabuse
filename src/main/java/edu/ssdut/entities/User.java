@@ -24,7 +24,6 @@ public class User implements Serializable{
     private String signature;
     @Column(columnDefinition = "text")
     private String introduction;
-    @Column(length = 3)
     private String avatar;
     private Long views;
 
@@ -57,7 +56,7 @@ public class User implements Serializable{
     public User() {
     }
 
-    public User(String nickname, String password, Character sex, String email, String signature, String introduction, String avatar, Long views, Profession profession, City city, Set<Education> educations, Set<Concerned> concerns) {
+    public User(String nickname, String password, Character sex, String email, String signature, String introduction, String avatar, Long views, Profession profession, City city, Set<Education> educations) {
         this.nickname = nickname;
         this.password = password;
         this.sex = sex;
@@ -69,7 +68,7 @@ public class User implements Serializable{
         this.profession = profession;
         this.city = city;
         this.educations = educations;
-        this.concerns = concerns;
+        //this.concerns = concerns;
     }
 
     public User(String nickname, String password, Character sex, String email) {

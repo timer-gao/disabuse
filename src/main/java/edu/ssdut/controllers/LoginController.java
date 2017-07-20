@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Gaomj on 2017/7/11.
@@ -56,7 +57,7 @@ public class LoginController {
         User user = userRepository.readByEmail(email);
         if (user!=null){
             if(user.getPassword().equals(password)){
-                request.getSession().setAttribute("username",user);
+                request.getSession().setAttribute("user",user);
                 return "redirect:index";
             }
             else{
@@ -64,6 +65,11 @@ public class LoginController {
             }
         }
         model.addAttribute("note","用户不存在！");
+        return "login";
+    }
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("user");
         return "login";
     }
 }

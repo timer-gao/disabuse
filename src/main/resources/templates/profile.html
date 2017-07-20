@@ -1,15 +1,129 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
-<head>
-    <meta charset="UTF-8"/>
-    <!--/*@thymesVar id="user" type="templates"*/-->
-    <title th:text="${user}+'的释惑个人主页'"></title>
-</head>
-<body>
-<h1>
-    <!--/*@thymesVar id="user" type="templates"*/-->
-    <span th:text="${user.nickname}"></span>的释惑个人主页
-</h1>
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <!--<base th:href="|127.0.0.1:80/profile/${nickName}|" />-->
+        <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="/static/js/profile.js"></script>
+        <!--链接区-->
+        <link rel="stylesheet" href="/static/css/profile.css"/>
+        <title th:text="'释惑——'+${nickName}+'的个人主页'"></title>
+    </head>
+    <body class="entry-body">
+        <div id="header">
+            <!--引用头部模板-->
+        </div>
+        <div class="main-body">
+            <div class="top-body">
+                <div class="cover">
+                    <div class="cover-pager">
+                        <a href="/" class="back">回到主页</a>
+                    </div>
+                    <div class="show-area"></div>
+                    <div class="head-show">
+                        <!-- 修改 -->
+                        <div id="head-img">
+                            <img th:src="${templete.avatarUrl}" class="user-img"/>
+                            <!-- 修改 -->
+                            <form th:if="${templete.travel != true}" id="post-img" action="/people/postImg" method="post"  target="#iframe" enctype="multipart/form-data" class="post-head-form">
+                                <div class="take-photo">
+                                    <img src="/static/images/up_avatar.png"/>
+                                    <p class="tell-word">点击上传头像</p>
+                                </div>
+                                <input type="file" name="file" id="file" accept="image/gif,image/png,image/jpg,image/jpeg"/>
+                            </form>
+                            <iframe id="iframe" name="iframe"></iframe>
+                        </div>
+                    </div>
+                    <h1>
+                        <span id="nickname" th:text="${nickName}">User</span>
+                        <span id="sex" th:text="${templete.sex}">W</span>
+                    </h1>
+                    <span class="introduction" th:text="${templete.introduction}">pythoner</span>
+                    <button type="button" class="blue-button" id="edit-info" th:if="${templete.travel != true}">修改信息</button>
+                    <button type="button" class="blue-button" id="focus-people" th:if="${templete.travel == true}" th:text="${templete.hasFocus}">关注</button>
+                </div>
+            </div>
+            <div class="activity-body">
+                <div class="tab-div">
+                    <ul  id= "activity-show" role="tablist" class="lead-tabs">
+                        <li role="tab" class="tab-items" id="focus">
+                            <a th:href="|/people/${nickName}/focus|" class="tab-link">我的关注</a>
+                            <span th:text="${templete.focusNum}" class="act-num">0</span>
+                        </li>
+                        <li role="tab" class="tab-items" id="collection">
+                            <a th:href="|/people/${nickName}/collection|" class="tab-link">我的收藏</a>
+                            <span th:text="${templete.collectionNum}" class="act-num">0</span>
+                        </li>
+                        <li role="tab" class="tab-items" id="answer">
+                            <a th:href="|/people/${nickName}/answer|" class="tab-link">我的回答</a>
+                            <span th:text="${templete.answerNum}" class="act-num">0</span>
+                        </li>
+                        <li role="tab" class="tab-items" id="question">
+                            <a th:href="|/people/${nickName}/question|" class="tab-link">我的提问</a>
+                            <span th:text="${templete.questionNum}" class="act-num">0</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="current-state">
+                    <p id="tag-name" class="tag-name" th:text="|我的${templete.tagName}|">我的关注</p>
+                </div>
+                <!-- 根据有无数据利用thymeleaf判断显示 -->
+                <div class="output">
+                    <div class="output-if-not-exist" th:if="${templete.list.size() == 0}"><h1 class="none-ouput">没有结果</h1></div>
+                    <div class="output-if-exist" th:unless="${templete.list.size() == 0}" >
+                        <div th:each="activity:${templete.list}">
+                            <div class="activity-items" th:name="${activity.id}" th:id="${activity.nickName}">
+                                <div class="activity-item-head">
+                                    <img class="activity-head-img" th:src="${activity.img}" />
+                                    <span th:text="${activity.nickName}" class="activity-username">Lucas</span>
+                                    <span class="activity-put-time" th:text="${activity.putTime}">11.11.11</span>
+                                </div>
+                                <div class="activity-item-body">
+                                    <a th:href="${activity.targetUrl}" th:text="${activity.title}" class="activity-title">title</a><br/>
+                                    <span class="text" th:text="${activity.bodyText}">
+
+                                    </span>
+                                </div>
+                                <div class="activity-item-footer">
+                                    <button class="like-button" th:if="${templete.travel == true}" th:text="${templete.buttonText}"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-body">
+                <div class="like-area">
+                    <span class="cut-off"></span>
+                    <div class="like-show" id="like-div">
+                        <span class="like-info"><a th:href="|/people/${nickName}/focus|">关注了</a></span>
+                        <span class="like-num" th:text="${templete.focusNum}">5</span>
+                    </div>
+                    <div class="like-show" id="liked-div">
+                        <span class="like-info"><a th:href="|/people/${nickName}/question|">提问</a></span>
+                        <span class="like-num" th:text="${templete.questionNum}">5</span>
+                    </div>
+                </div>
+                <div class="profile">
+                        <span class="profile-item">
+                            <span class="profile-item-name">我的关注</span>
+                            <span class="profile-item-value" th:text="${templete.focusNum}">0</span>
+                        </span>
+                    <span class="profile-item">
+                            <span class="profile-item-name">关注者</span>
+                            <span class="profile-item-value" th:text="${templete.focusedNum}">0</span>
+                        </span>
+                    <span class="profile-item">
+                            <span class="profile-item-name">提问数</span>
+                            <span class="profile-item-value" th:text="${templete.questionNum}">0</span>
+                        </span>
+                    <span class="profile-item">
+                            <span class="profile-item-name">回答数</span>
+                            <span class="profile-item-value" th:text="${templete.answerNum}">0</span>
+                        </span>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

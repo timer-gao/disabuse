@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>释惑——话题</title>
 </head>
-<body>
-
+<body style="padding-left: 25%">
+<!--/*@thymesVar id="section" type="templates"*/-->
+<h2 th:text="'版块标题：&nbsp;&nbsp;'+${section.title}"></h2>
+<div style="width: 50%" th:text="'描述：&nbsp;&nbsp;'+${section.description}"></div>
 </body>
 </html>

@@ -83,14 +83,14 @@ public class DisabuseApplicationTests {
 		Assert.notNull(city);
 
 		User simpleUser=new User("Baby","Mami",null,"baby@123.com",null,
-				null,null,null,null,null,null,null);
+				null,null,null,null,null,null);
 
 		userRepository.save(simpleUser);
 		Assert.notNull(simpleUser.getId(),"!!!!!!!!!!!!!!simpleUser为空!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 		User fullUser=new User("admin","123456",'男',"admin@example.com",
 				"一片冰心在玉壶","我是一只小小鸟，怎么飞也飞不高",
-				null,8888L,profession,city,new HashSet<>(),null);
+				null,8888L,profession,city,new HashSet<>());
 
 		userRepository.save(fullUser);
 		Assert.notNull(fullUser.getId(),"!!!!!!!!!!!!!!fullUser为空!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -122,7 +122,7 @@ public class DisabuseApplicationTests {
 		Set<Concerned> simpleUserConcerneds =new HashSet<>();
 		Concerned concerned1=new Concerned(simpleUser,fullUser,new Date());
 		simpleUserConcerneds.add(concerned1);
-		simpleUser.setConcerns(simpleUserConcerneds);
+		//simpleUser.setConcerns(simpleUserConcerneds);
 		//concernedRepository.save(concerned1);
 		//Assert.notNull(concerned1.getUser().getId());
 
@@ -133,7 +133,7 @@ public class DisabuseApplicationTests {
 		Set<Concerned> fullUserConcerneds =new HashSet<>();
 		Concerned concerned2=new Concerned(fullUser,simpleUser,new Date());
 		fullUserConcerneds.add(concerned2);
-		fullUser.setConcerns(fullUserConcerneds);
+		//fullUser.setConcerns(fullUserConcerneds);
 
 		//concernedRepository.save(concerned2);
 		//Assert.notNull(concerned2.getUser().getId());

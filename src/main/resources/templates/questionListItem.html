@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="../static/css/questionListItem.css" type="text/css"/>
+    <link rel="stylesheet" href="../static/css/voteFooter.css"/>
     <title>Card</title>
 </head>
 <body>
@@ -13,15 +14,15 @@
         <li class="table-view-cell media">
             <h4 class="topic"><span>来自话题:</span>
                 <span><!--/*@thymesVar id="question" type="templates"*/-->
-                <a th:text="${question.section.title}" href="topic.html"/></span></h4>
+                <a th:text="${question.section.title}" th:href="'topic.html?sectionId='+${question.section.id}" target="_blank"/></span></h4>
         <li>
-            <a th:href="@{'profile.html?userId='+${question.user.nickname}}" target="_blank">
+            <a th:href="@{'/people/'+${question.user.nickname}}" target="_blank">
                 <img class="avatar" th:src="@{'../static/avatar/'+${question.user.nickname}+'.'+${question.user.avatar}}"/>
                 <span class="user nikename" th:text="${question.user.nickname}"></span>
             </a>
             <span class="user signature" th:text="','+${question.user.signature}"></span>
         </li>
-        <li><a class="navigate-right" th:href="@{'questionDetail.html?questionId='+${question.id}}" target="_blank">
+        <li><a class="navigate-right" th:href="@{'/questionDetail.html?questionId='+${question.id}}" target="_blank">
             <!--/*@thymesVar id="question" type="templates"*/-->
             <h3 th:text="${question.title}"></h3>
             <!--这里可以指明点击该卡片的跳转-->
@@ -39,6 +40,27 @@
         </nav>
         </a>
         </li>
+        </li>
+        <li>
+            <div class="questionfooter">
+                <button class="button votebutton" type="button">
+                    <img class="smallimages" src="../static/images/vote.png"/>
+                    <text class="number" th:text="${question.views}"></text>
+                </button>
+                <button class="button-plain" type="button">
+                    <img class="smallimages" src="../static/images/answer.png"/>
+                    <text class="answernumber" th:text="${answerCount}+'条评论'"></text>
+                </button>
+                <button class="button-plain" type="button">
+                    <img class="smallimages" src="../static/images/share.png"/>
+                    <text class="shareplain">分享</text>
+                </button>
+                <button class="button-plain" type="button">
+                    <img class="smallimages" src="../static/images/report.png"/>
+                    <text class="reportplain">举报</text>
+                </button>
+
+            </div>
         </li>
     </ul>
 </div>
