@@ -17,7 +17,7 @@
                 <a th:text="${question.section.title}" th:href="'topic.html?sectionId='+${question.section.id}" target="_blank"/></span></h4>
         <li>
             <a th:href="@{'/people/'+${question.user.nickname}}" target="_blank">
-                <img class="avatar" th:src="@{'../static/avatar/'+${question.user.nickname}+'.'+${question.user.avatar}}"/>
+                <img class="avatar" th:src="${question.user.avatar}"/>
                 <span class="user nikename" th:text="${question.user.nickname}"></span>
             </a>
             <span class="user signature" th:text="','+${question.user.signature}"></span>

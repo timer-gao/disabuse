@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8"/>
     <title>释惑——全文</title>
-    <link rel="stylesheet" href="../static/css/questionDetails.css" th:href="'css/questionDetails.css'"/>
-    <link rel="stylesheet" href="../static/css/votefooter.css" th:href="'css/votefooter.css'"/>
+    <link rel="stylesheet" href="../static/css/questionDetails.css"/>
+    <link rel="stylesheet" href="../static/css/votefooter.css"/>
     <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
         /*<![CDATA[*/
@@ -124,7 +124,7 @@
                     <img class="TitleImage" alt="" th:src="${questionImg}"/>
                 </div>
                 <h1 class="paper-title" th:text="${question.title}">这是标题</h1>
-                <div class="paper-author" th:text="${question.user.nickName}">
+                <div class="paper-author" th:text="${question.user.nickname}">
                     作者
                 </div>
             </div>

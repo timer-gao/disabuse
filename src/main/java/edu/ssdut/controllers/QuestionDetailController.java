@@ -32,10 +32,10 @@ public class QuestionDetailController {
     @Autowired
     CollectionRepository collectionRepository;
 
-    @RequestMapping(value = "/questionDetail.html", method=RequestMethod.POST)
+    @RequestMapping(value = "/questionDetail.html", method=RequestMethod.GET)
     public String questionDetail( HttpServletRequest request, Model model){
-        long id = request.getIntHeader("questionId");
-        System.out.print(id);
+        long id = Long.parseLong(request.getParameter("questionId"));
+        //System.out.print(id);
         Question question = questionRepository.findOne(id);
         List<Answer> answerList = answerRepository.findAllByQuestion(question);
         List<PriAnswer> priAnswers = new ArrayList<>();
