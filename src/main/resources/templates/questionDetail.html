@@ -1,10 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8"/>
     <title>释惑——全文</title>
+    <link rel="stylesheet" href="../static/css/questionDetails.css" th:href="'css/questionDetails.css'"/>
+    <link rel="stylesheet" href="../static/css/votefooter.css" th:href="'css/votefooter.css'"/>
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        var questionId = "id=" + $("#body-wrappe").attr("name");
+        //收藏问题
+        $("#voteQuestion").click(function () {
+            var data = "id=" + questionId;
+            $("#collectionQuestin").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/questionDetail/collectionQuestion',
+                    data: data,
+                    success: function () {
+                        alert("collection question success");
+                    },
+                    error: function () {
+                        alert("vote question error");
+                    }
+                })
+            });
+        });
+        //回答
+        $(document).ready(function () {
+            $("#answer-comment").click(function () {
+                var myanswer = $("#answer-input").val();
+                if(myanswer == "")
+                    return false;
+                var data = "myanswer=" + myanswer + "&id=" + questionId;
+                $.ajax({
+                    type:'POST',
+                    url: '/questionDetail/answer',
+                    data: data,
+                    success: function (data) {
+                        window.location.reload(true);
+                    },
+                    error:function () {
+                        alert("answer error");
+                    }
+                });
+            });
+        });
+        //vote answer.
+        $(document).ready(function () {
+            $(".vote-answer").click(function () {
+                var div = $(this).parent().parent().parent().parent();
+                var data = "id=" + div.attr("id");
+                $.ajax({
+                    type: 'POST',
+                    url: '/questionDetail/vote',
+                    data: data,
+                    success: function () {
+                        alert("vote answer success");
+                    },
+                    error: function () {
+                        alert("vote answer error");
+                    }
+                })
+            })
+        });
+        $(document).ready(function () {
+            $(".comment-answer").click(function () {
+                var elem = $(this).parent().parent().next();
+                elem.removeClass("hiden-dcomment");
+            })
+        });
+        $(document).ready(function () {
+           $(".cancle-button").click(function () {
+               $(this).parent().parent().parent().addClass("hiden-dcomment");
+           });
+        })
+        $(document).ready(function () {
+            $(".comment-button").click(function () {
+                var text =  $(this).parent().parent().firstChild().val();
+                if(text == ""){
+                    return false;
+                }
+                var data = "id=" + $(this).attr("name") + "&value=" + text;
+                $.ajax({
+                    type: 'POST',
+                    url: '/questionDetail/comment',
+                    data: data,
+                    success: function () {
+                        alert("vote answer success");
+                        window.location.reload(true);
+                    },
+                    error: function () {
+                        alert("vote answer error");
+                    }
+                })
+            });
+        })
+        /*]]>*/
+    </script>
 </head>
 <body>
+    <div class="main-wrapper">
+        <header class="header-wrapper">
+            <div class="header-logo">
+                <img id="logo1" src="../static/images/logo.png"/>
+            </div>
+            <div class="header-func">
+                <a class="header-ask" href="askQuestion.html">
+                    <img class="write-logo" src="../static/images/write-paper.png"/>
+                    写文章
+                </a>
+                <div class="menu-more">
+                    <button class="menubutton" aria-label="更多选项" type="button">
+                        <img id="icon-more" src="../static/images/icon-more.png"/>
+                    </button>
+                </div>
+            </div>
+        </header>  <!--页眉部分，还未设为固定-->
+        <div class="body-wrapper" id="body-wrappe" th:name="${question.id}">  <!--详细内容-->
+            <div class="body-header">  <!--文章整体标题-->
+                <div class="TitleImage">
+                    <img class="TitleImage" alt="" th:src="${questionImg}"/>
+                </div>
+                <h1 class="paper-title" th:text="${question.title}">这是标题</h1>
+                <div class="paper-author" th:text="${question.user.nickName}">
+                    作者
+                </div>
+            </div>
+            <div class="body-main"> <!--文章主体-->
+                <div class="paper-contents broken-words" th:text="${question.description}">
+                    pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+                </div>
+                <div class="paper-footers">
+                    <div class="paper-topic">
+                        <span class="TopicItem" th:text="${tags}">编程</span>
+                        <span class="TopicItem" th:text="${question.section.description}">IT 行业</span>
+                    </div>
+                    <div class="reviewers"></div>
+                    <div class="paper-control">
+                        <div class="Fav">
+                            <button class="button-plain favbutton" type="button" id="collectionQuestin">
+                                <img class="smallimages" src="../static/images/Fav.png"/>
+                                收藏
+                            </button>
+                        </div>
+                        <div class="Share">
+                            <button class="button-plain sharebutton" type="button">
+                                <img class="smallimages" src="../static/images/share.png"/>
+                                分享
+                            </button>
+                        </div>
+                        <div class="Report">
+                            <button class="button-plain reportbutton" type="button">
+                                <img class="smallimages" src="../static/images/report.png"/>
+                                <text class="reportplain">举报</text>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="paper-Comment">
+                    <div class="CommentEditor">
+                        <img class="Avatar" alt="nickname" src=""/>
+                        <div class="CommentEditor-input">
+                            <textarea class="inputcomment" placeholder="请写下你的评论..." id="answer-input"></textarea>
+                        </div>
+                        <div class="CommentEditor-action">
+                            <button class="button button-blue" type="button" id="answer-comment">评论</button>
+                        </div>
+                    </div>
+                    <div class="CommentList" id="commentList" th:each="answer:${answerList}">
+                        <div class="CommentItem" th:id="${answer.id}">
+                            <div class="CommentItem-left">
+                                <a class="UserAvatar" th:href="|/people/${answer.user.nickname}|" target="_blank">
+                                    <img class="Avatar" alt="nickname" th:src="${answer.user.avatar}"/>
+                                </a>
+                            </div>
+                            <div class="CommentItem-right">
+                                <div class="CommentItem-header">
+                                     <span class="CommentItem-username">
+                                         <a th:href="|/people/${answer.user.nickname}|" target="_blank" th:text="${answer.user.nickname}">nickname</a>
+                                     </span>
+                                </div>
+                                <div class="CommentItem-content broken-words" th:text="${answer.description}">
+                                     <p>lalala</p>
+                                </div>
 
+                                <div class="CommentItem-foot">
+                                    <div class="CreatedTime" data-hover-title="">
+                                        <time datetime="" th:text="${answer.createDate}">几天前</time>
+                                    </div>
+                                    <div class="CommentItem-foot-button">
+                                        <button class="button CommentItem-action CommentItem-actionReply button-plain comment-answer" type="button">
+                                              <img class="reply" src=""/>
+                                             回复
+                                        </button>
+                                        <button class="button votebutton vote-answer" type="button">
+                                             <img class="smallimages" src="../static/images/vote.png"/>
+                                        </button>
+                                        <button class="button-plain " type="button">
+                                             <img class="smallimages" src="../static/images/report.png"/>
+                                             <text class="reportplain">举报</text>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="CommentItem-InlineReply hiden-dcomment"> <!--内部回复，还未隐藏-->
+                                    <div class="CommentEditor">
+                                        <div class="CommentEditor-input">
+                                            <textarea class="inputcomment" placeholder="请写下你的评论..." id="recomment"></textarea>
+                                        </div>
+                                        <div class="CommentEditor-action">
+                                            <button class="button button-blue comment-button" type="button" th:name="${answer.id}">评论</button>
+                                            <button class="button button-plain cancle-button" type="button">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="CommentItem" id="comment-show" th:each="comment:${answer.followAnswer}">
+                            <div class="CommentItem">
+                                <div class="CommentItem-left">
+                                    <a class="UserAvatar" th:href="|/people/${comment.user.nickname}|" target="_blank">
+                                        <img class="Avatar" alt="nickname" th:src="${comment.user.avatar}"/>
+                                    </a>
+                                </div>
+                                <div class="CommentItem-right">
+                                    <div class="CommentItem-header">
+                                         <span class="CommentItem-username">
+                                             <a th:href="|/people/${comment.user.nickname}|" target="_blank" th:text="${comment.user.nickname}">nickname</a>
+                                         </span>
+                                    </div>
+                                    <div class="CommentItem-content broken-words" th:text="${comment.description}">
+                                        <p>lalala</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
